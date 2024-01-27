@@ -27,8 +27,8 @@ def are_multisets_equal(x, y):
 
     Not vectorized implementation.
     """
-
-    pass
+    
+    return sorted(x) == sorted(y)
 
 
 def max_after_zero(x):

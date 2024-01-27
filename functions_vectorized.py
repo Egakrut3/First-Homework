@@ -26,8 +26,8 @@ def are_multisets_equal(x, y):
 
     Vectorized implementation.
     """
-
-    pass
+    
+    return np.array_equal(np.sort(x, kind = "heapsort"), np.sort(y, kind = "heapsort"))
 
 
 def max_after_zero(x):
