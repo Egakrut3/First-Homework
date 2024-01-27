@@ -13,7 +13,7 @@ def prod_non_zero_diag(x):
     Vectorized implementation.
     """
 
-    return np.prod(np.diag(x), where = (np.diag(x) ! = 0))
+    return np.prod(np.diag(x), where = (np.diag(x) != 0))
 
 
 def are_multisets_equal(x, y):
