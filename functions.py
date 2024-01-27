@@ -41,8 +41,15 @@ def max_after_zero(x):
 
     Not vectorized implementation.
     """
-
-    pass
+    
+    ans = None
+    for i in range(len(x) - 1):
+        if x[i] == 0:
+            if ans == None:
+                ans = x[i + 1]
+            else:
+                ans = max(ans, x[i + 1])
+    return ans
 
 
 def convert_image(img, coefs):

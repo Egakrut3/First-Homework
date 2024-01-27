@@ -41,7 +41,7 @@ def max_after_zero(x):
     Vectorized implementation.
     """
 
-    pass
+    return np.max(x, initial = -100000, where = (np.concatenate([[1], x[:-1]]) == 0))
 
 
 def convert_image(img, coefs):
