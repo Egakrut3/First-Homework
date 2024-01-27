@@ -9,8 +9,12 @@ def prod_non_zero_diag(x):
 
     Not vectorized implementation.
     """
-
-    pass
+    
+    ans = 1
+    for i in range(min(len(x), len(x[0]))):
+        if x[i][i] != 0:
+            ans *= x[i][i]
+    return ans
 
 
 def are_multisets_equal(x, y):
