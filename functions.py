@@ -78,7 +78,19 @@ def run_length_encoding(x):
     Not vectorized implementation.
     """
 
-    pass
+    value_arr = []
+    count_arr = []
+    cur_cnt = 1
+    for i in range(len(x) - 1):
+        if x[i] != x[i + 1]:
+            value_arr.append(x[i])
+            count_arr.append(cur_cnt)
+            cur_cnt = 1
+        else:
+            cur_cnt += 1
+    value_arr.append(x[-1])
+    count_arr.append(cur_cnt)
+    return (value_arr, count_arr)
 
 
 def pairwise_distance(x, y):

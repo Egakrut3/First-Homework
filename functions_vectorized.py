@@ -41,7 +41,7 @@ def max_after_zero(x):
     Vectorized implementation.
     """
 
-    return np.max(x, initial = -100000, where = (np.concatenate([[1], x[:-1]]) == 0))
+    return np.max(x, initial = -100000, where = np.concatenate(([False], x[:-1] == 0)))
 
 
 def convert_image(img, coefs):
@@ -70,7 +70,8 @@ def run_length_encoding(x):
     Vectorized implementation.
     """
 
-    pass
+    index_arr = np.nonzero(np.concatenate(([True], x[1:] != x[:-1])))[0]
+    return (x[index_arr], np.diff(np.concatenate((index_arr, [len(x)]))))
 
 
 def pairwise_distance(x, y):
