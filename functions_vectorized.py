@@ -84,5 +84,8 @@ def pairwise_distance(x, y):
 
     Vctorized implementation.
     """
-
-    pass
+    x_square = np.matmul(np.sum(np.square(x), axis = 1), [1 for _ in range(len(y))])
+    print(x_square)
+    print(y_square)
+    y_square = np.matmul(np.sum(np.square(y), axis = 1), [1 for _ in range(len(x))]).transpose()
+    return np.sqrt(x_square - 2 * np.matmul(x, y) + y_square)

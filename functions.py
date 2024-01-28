@@ -93,6 +93,7 @@ def run_length_encoding(x):
     return (value_arr, count_arr)
 
 
+import math
 def pairwise_distance(x, y):
     """Return pairwise object distance.
 
@@ -104,4 +105,8 @@ def pairwise_distance(x, y):
     Not vectorized implementation.
     """
 
-    pass
+    ans = [[None] * len(y)] * len(x)
+    for i in range(len(x)):
+        for j in range(len(y)):
+            ans[i][j] = math.dist(x[i], y[j])
+    return ans
