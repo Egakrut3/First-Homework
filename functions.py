@@ -105,7 +105,7 @@ def pairwise_distance(x, y):
     Not vectorized implementation.
     """
 
-    ans = [[None] * len(y)] * len(x)
+    ans = [[None for _ in range(len(y))] for _ in range(len(x))]
     for i in range(len(x)):
         for j in range(len(y)):
             ans[i][j] = math.dist(x[i], y[j])
