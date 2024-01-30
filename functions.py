@@ -108,5 +108,8 @@ def pairwise_distance(x, y):
     ans = [[None for _ in range(len(y))] for _ in range(len(x))]
     for i in range(len(x)):
         for j in range(len(y)):
-            ans[i][j] = math.dist(x[i], y[j])
+            sum_dist = 0
+            for k in range(len(x[i])):
+                sum_dist += (x[i][k] - y[j][k]) ** 2
+            ans[i][j] = sum_dist ** 0.5
     return ans
