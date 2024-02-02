@@ -85,9 +85,6 @@ def pairwise_distance(x, y):
     Vctorized implementation.
     """
     
-    print(x)
-    print(y)
-    Y, X = np.meshgrid(y, x, axis = 2)
-    print(X)
-    print(Y)
-    return np.square(np.sum(np.square(X - Y), axis = 2))
+    h_x = np.tile(x, len(y)).reshape((len(x), len(y), -1))
+    h_y = np.tile(y, len(x)).reshape((len(y), len(x), -1)).transpose((1, 0, 2))
+    return np.sqrt(np.sum(np.square(h_x - h_y), axis = 2))
