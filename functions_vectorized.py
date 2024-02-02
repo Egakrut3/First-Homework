@@ -56,7 +56,8 @@ def convert_image(img, coefs):
     Vectorized implementation.
     """
 
-    pass
+    h_coefs = np.tile(coefs, (img.shape[0], img.shape[1])).reshape(img.shape)
+    return np.sum(img * h_coefs, axis = 2)
 
 
 def run_length_encoding(x):
@@ -71,7 +72,7 @@ def run_length_encoding(x):
     """
 
     index_arr = np.nonzero(np.concatenate(([True], x[1:] != x[:-1])))[0]
-    return (x[index_arr], np.diff(np.concatenate((index_arr, [len(x)]))))
+    return (x[index_arr], np.diff(np.concatenate((index_arr, [x.shape[0]]))))
 
 
 def pairwise_distance(x, y):
@@ -85,6 +86,6 @@ def pairwise_distance(x, y):
     Vctorized implementation.
     """
     
-    h_x = np.tile(x, len(y)).reshape((len(x), len(y), -1))
-    h_y = np.tile(y, len(x)).reshape((len(y), len(x), -1)).transpose((1, 0, 2))
+    h_x = np.tile(x, y.shape[0]).reshape((x.shape[0], y.shape[0], -1))
+    h_y = np.tile(y, x.shape[0]).reshape((y.shape[0], x.shape[0], -1)).transpose((1, 0, 2))
     return np.sqrt(np.sum(np.square(h_x - h_y), axis = 2))

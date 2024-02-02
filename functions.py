@@ -64,7 +64,14 @@ def convert_image(img, coefs):
     Not vectorized implementation.
     """
 
-    pass
+    ans = [[None for _ in range(len(img[0]))] for _ in range(len(img))]
+    for i in range(len(img)):
+        for j in range(len(img[0])):
+            sum_val = 0
+            for k in range(len(coefs)):
+                sum_val += img[i][j][k] * coefs[k]
+            ans[i][j] = sum_val
+    return ans
 
 
 def run_length_encoding(x):
